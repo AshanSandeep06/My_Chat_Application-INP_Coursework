@@ -23,7 +23,7 @@
                   <Font name="System Bold Italic" size="29.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="39.0" text="Server" textFill="WHITE">
+            <Label layoutX="46.0" layoutY="39.0" text="Server" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
