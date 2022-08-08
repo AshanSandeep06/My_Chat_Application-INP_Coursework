@@ -1,4 +1,4 @@
-package controller;
+package lk.ijse.socket.controller;
 
 /**
  * @author : Ashan Sandeep
