@@ -19,7 +19,7 @@ public class LoginFormController {
     public TextField txtUserName;
     public Button btnLogin;
 
-    ObservableList<String> usersList = FXCollections.observableArrayList();
+    public static ObservableList<String> usersList = FXCollections.observableArrayList();
 
     public void initialize() {
         usersList.addAll("Sameera Gunawardena", "Nimal Perera", "Imali Nethushi");
