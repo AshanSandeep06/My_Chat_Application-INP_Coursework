@@ -18,7 +18,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUserName" layoutX="311.0" layoutY="348.0" prefHeight="15.0" prefWidth="269.0" style="-fx-background-color: CDCDCD;">
+      <TextField fx:id="txtUserName" layoutX="311.0" layoutY="348.0" onKeyReleased="#keyReleasedOnAction" prefHeight="15.0" prefWidth="269.0" style="-fx-background-color: CDCDCD;">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -28,7 +28,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="411.0" layoutY="444.0" mnemonicParsing="false" onAction="#chatLoginOnAction" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: CDCDCD; -fx-border-color: CDCDCD;" text="Log In">
+      <Button fx:id="btnLogin" layoutX="411.0" layoutY="444.0" mnemonicParsing="false" onAction="#chatLoginOnAction" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: CDCDCD; -fx-border-color: CDCDCD;" text="Log In">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
