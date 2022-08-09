@@ -2,6 +2,7 @@ package lk.ijse.socket.controller;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -10,21 +11,57 @@ import javafx.stage.Stage;
 import lk.ijse.socket.util.Delta;
 import lk.ijse.socket.util.OptionUtil;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /**
  * @author : Ashan Sandeep
  * @since : 0.1.0
  **/
 
 public class ServerFormController {
-    public ScrollPane scrollPane;
-    public VBox vbox;
     public Label closeLabel;
     public ImageView imgClose;
     public Label minimizeLable;
     public AnchorPane context;
     public AnchorPane mainContext;
+    public TextArea textArea;
 
     final Delta dragDelta = new Delta();
+
+    private ServerSocket serverSocket;
+    private final int PORT = 5000;
+    private DataInputStream dataInputStream;
+    private DataOutputStream dataOutputStream;
+    private Socket localSocket;
+    private String clientMessage = "";
+
+    public void initialize(){
+        Thread t1 = new Thread(() -> {
+            try{
+                serverSocket = new ServerSocket(PORT);
+                textArea.appendText("Server Started\n");
+
+                localSocket = serverSocket.accept();
+                textArea.appendText("Client Accepted..!\n");
+
+                dataInputStream = new DataInputStream(localSocket.getInputStream());
+                dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
+
+                while(!clientMessage.equalsIgnoreCase("finish")){
+                    clientMessage = dataInputStream.readUTF();
+                    textArea.appendText(clientMessage+"\n");
+                }
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        });
+        t1.start();
+    }
 
     public void closeMouseEnteredOnAction(MouseEvent mouseEvent) {
         OptionUtil.closeMouseEnter(closeLabel, imgClose);

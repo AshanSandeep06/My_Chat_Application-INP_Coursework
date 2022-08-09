@@ -2,20 +2,14 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainContext" prefHeight="726.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.socket.controller.ServerFormController">
    <children>
-      <ScrollPane fx:id="scrollPane" layoutX="34.0" layoutY="150.0" prefHeight="542.0" prefWidth="679.0" style="-fx-background-color: BLACK;">
-         <content>
-            <VBox fx:id="vbox" prefHeight="547.0" prefWidth="661.0" style="-fx-background-color: #FFF5;" />
-         </content>
-      </ScrollPane>
       <AnchorPane layoutY="50.0" prefHeight="76.0" prefWidth="746.0" style="-fx-background-color: #16287C;">
          <children>
             <Label layoutX="152.0" layoutY="18.0" text="\@Play Tech Pvt Ltd's Chat Room" textFill="GOLD">
@@ -51,5 +45,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <TextArea fx:id="textArea" layoutX="34.0" layoutY="150.0" prefHeight="542.0" prefWidth="679.0" />
    </children>
 </AnchorPane>

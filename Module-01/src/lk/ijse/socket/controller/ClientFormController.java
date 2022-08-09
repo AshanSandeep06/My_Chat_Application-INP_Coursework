@@ -11,6 +11,11 @@ import javafx.stage.Stage;
 import lk.ijse.socket.util.Delta;
 import lk.ijse.socket.util.OptionUtil;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
 /**
  * @author : Ashan Sandeep
  * @since : 0.1.0
@@ -29,6 +34,31 @@ public class ClientFormController {
     public ImageView imgEmojiIcon;
 
     final Delta dragDelta = new Delta();
+
+    private DataOutputStream dataOutputStream;
+    private DataInputStream dataInputStream;
+    private final int PORT = 5000;
+    Socket remoteSocket;
+    String serverMessage = "";
+
+    public void initialize(){
+        new Thread(() -> {
+            try{
+                remoteSocket = new Socket("localhost",PORT);
+
+                dataInputStream = new DataInputStream(remoteSocket.getInputStream());
+                dataOutputStream = new DataOutputStream(remoteSocket.getOutputStream());
+
+                while(!serverMessage.equalsIgnoreCase("finish")){
+                    serverMessage = dataInputStream.readUTF();
+                    txtMessageArea.appendText(serverMessage+"\n");
+                }
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }).start();
+    }
 
     public void mouseDraggedOnAction(MouseEvent mouseEvent) {
         Stage window = (Stage) mainContext.getScene().getWindow();
@@ -69,10 +99,18 @@ public class ClientFormController {
     }
 
     public void txtMessagesSendOnAction(ActionEvent event) {
-
+        try{
+            dataOutputStream.writeUTF(txtMessage.getText().trim());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void messagesSendOnAction(ActionEvent event) {
-
+        try{
+            dataOutputStream.writeUTF(txtMessage.getText().trim());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
