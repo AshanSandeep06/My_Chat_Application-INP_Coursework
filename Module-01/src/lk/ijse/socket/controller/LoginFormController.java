@@ -39,6 +39,7 @@ public class LoginFormController {
     public AnchorPane mainContext;
 
     final Delta dragDelta = new Delta();
+    public static String clientUserName = "";
 
     public void initialize() {
         usersList.addAll("Sameera Gunawardena", "Nimal Perera", "Imali Nethushi");
@@ -71,6 +72,7 @@ public class LoginFormController {
                         new Alert(Alert.AlertType.CONFIRMATION, "Successfully logged to the Group Chat ✔").show();
                         Stage stage = (Stage) mainContext.getScene().getWindow();
                         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ClientForm.fxml"))));
+                        clientUserName = txtUserName.getText();
                         return;
                     }
                 }
