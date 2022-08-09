@@ -45,6 +45,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TextArea fx:id="textArea" layoutX="34.0" layoutY="150.0" prefHeight="542.0" prefWidth="679.0" />
+      <TextArea fx:id="textArea" editable="false" layoutX="34.0" layoutY="150.0" prefHeight="542.0" prefWidth="679.0" />
    </children>
 </AnchorPane>

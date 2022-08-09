@@ -48,7 +48,7 @@
             <Label layoutX="19.0" layoutY="38.0" text="Active now" textFill="WHITESMOKE" />
          </children>
       </AnchorPane>
-      <TextArea fx:id="txtMessageArea" layoutX="21.0" layoutY="132.0" prefHeight="505.0" prefWidth="680.0" />
+      <TextArea fx:id="txtMessageArea" editable="false" layoutX="21.0" layoutY="132.0" prefHeight="505.0" prefWidth="680.0" />
       <AnchorPane layoutY="652.0" prefHeight="86.0" prefWidth="721.0" style="-fx-background-color: #16287C;">
          <children>
             <TextField layoutX="18.0" layoutY="21.0" prefHeight="45.0" prefWidth="51.0" style="-fx-border-color: #F3F3F3;" />
