@@ -21,6 +21,7 @@ public class AppInitializer extends Application {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("lk/ijse/socket/view/LoginForm.fxml"))));
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
+        primaryStage.setTitle("Login");
         primaryStage.show();
     }
 }
