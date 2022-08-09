@@ -5,8 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,8 @@ public class LoginFormController {
     public Button btnLogin;
 
     public static ObservableList<String> usersList = FXCollections.observableArrayList();
+    public Label closeLabel;
+    public Label minimizeLable;
 
     public void initialize() {
         usersList.addAll("Sameera Gunawardena", "Nimal Perera", "Imali Nethushi");
@@ -71,5 +75,13 @@ public class LoginFormController {
     private void clear(){
         txtUserName.clear();
         btnLogin.setDisable(true);
+    }
+
+    public void closeOnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void minimizeOnAction(MouseEvent mouseEvent) {
+
     }
 }
