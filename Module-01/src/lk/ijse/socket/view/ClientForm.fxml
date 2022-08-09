@@ -1,8 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="676.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.socket.controller.ClientFormController">
-
+<AnchorPane prefHeight="738.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.socket.controller.ClientFormController">
+   <children>
+      <AnchorPane fx:id="context" onMouseDragged="#mouseDraggedOnAction" onMousePressed="#mousePressedOnAction" prefHeight="50.0" prefWidth="721.0" style="-fx-background-color: #F3F3F3;">
+         <children>
+            <Label fx:id="closeLabel" layoutX="661.0" prefHeight="50.0" prefWidth="60.0" />
+            <ImageView fx:id="imgClose" fitHeight="33.0" fitWidth="32.0" layoutX="675.0" layoutY="9.0" onMouseClicked="#closeOnAction" onMouseEntered="#closeMouseEnteredOnAction" onMouseExited="#closeMouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/close.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="minimizeLable" layoutX="591.0" prefHeight="50.0" prefWidth="60.0" />
+            <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="605.0" layoutY="9.0" onMouseClicked="#minimizeOnAction" onMouseEntered="#minimizeMouseEnteredOnAction" onMouseExited="#minimizeMouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/minimize.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="50.0" prefHeight="66.0" prefWidth="721.0" style="-fx-background-color: #16287C;">
+         <children>
+            <Label layoutX="285.0" layoutY="12.0" text="Chat Room" textFill="GOLD">
+               <font>
+                  <Font name="System Bold Italic" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="8.0" text="Imali Nethushi" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Circle fill="#12e466" layoutX="107.0" layoutY="47.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label layoutX="19.0" layoutY="35.0" text="Active now" textFill="WHITESMOKE" />
+         </children>
+      </AnchorPane>
+      <TextArea layoutX="21.0" layoutY="133.0" prefHeight="505.0" prefWidth="680.0" />
+      <AnchorPane layoutY="652.0" prefHeight="86.0" prefWidth="721.0" style="-fx-background-color: #16287C;">
+         <children>
+            <TextField layoutX="21.0" layoutY="21.0" prefHeight="45.0" prefWidth="542.0" />
+            <JFXButton buttonType="RAISED" layoutX="584.0" layoutY="24.0" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #127EFC;" text="Send" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
