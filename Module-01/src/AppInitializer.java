@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -21,6 +22,7 @@ public class AppInitializer extends Application {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("lk/ijse/socket/view/LoginForm.fxml"))));
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Login");
         primaryStage.show();
     }
