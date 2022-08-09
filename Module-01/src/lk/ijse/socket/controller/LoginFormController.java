@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import lk.ijse.socket.util.OptionUtil;
 
 import java.util.ArrayList;
 
@@ -85,31 +86,28 @@ public class LoginFormController {
     }
 
     public void minimizeMouseEnteredOnAction(MouseEvent mouseEvent) {
-        minimizeLable.setStyle("-fx-background-color: #E5E5E5");
+        OptionUtil.minimizeMouseEnter(minimizeLable);
     }
 
     public void minimizeMouseExitedOnAction(MouseEvent mouseEvent) {
-        minimizeLable.setStyle("-fx-background-color: #FFFF");
+        OptionUtil.minimizeMouseExit(minimizeLable);
     }
 
     public void closeMouseEnteredOnAction(MouseEvent mouseEvent) {
-        closeLabel.setStyle("-fx-background-color: #E81123");
-        imgClose.setImage(new Image("lk/ijse/socket/assets/images/close2.png"));
+        OptionUtil.closeMouseEnter(closeLabel, imgClose);
     }
 
     public void closeMouseExitedOnAction(MouseEvent mouseEvent) {
-        closeLabel.setStyle("-fx-background-color: #FFFF");
-        imgClose.setImage(new Image("lk/ijse/socket/assets/images/close.png"));
+        OptionUtil.closeMouseExit(closeLabel, imgClose);
     }
 
     public void minimizeOnAction(MouseEvent mouseEvent) {
-        Stage window = (Stage) context.getScene().getWindow();
-        window.setIconified(true);
+        Stage stage = (Stage) context.getScene().getWindow();
+        OptionUtil.minimizeOnAction(stage);
     }
 
     public void closeOnAction(MouseEvent mouseEvent) {
-        Stage window = (Stage) context.getScene().getWindow();
-        //window.close();
-        System.exit(0);
+        Stage stage = (Stage) context.getScene().getWindow();
+        OptionUtil.closeOnAction(stage);
     }
 }
