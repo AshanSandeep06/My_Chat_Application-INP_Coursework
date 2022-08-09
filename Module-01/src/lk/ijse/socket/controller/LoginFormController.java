@@ -69,10 +69,10 @@ public class LoginFormController {
             if (txtUserName.getText().matches("^[A-z ]{3,25}$")) {
                 for (String userName : usersList) {
                     if (userName.equalsIgnoreCase(txtUserName.getText())) {
+                        clientUserName = txtUserName.getText();
                         new Alert(Alert.AlertType.CONFIRMATION, "Successfully logged to the Group Chat ✔").show();
                         Stage stage = (Stage) mainContext.getScene().getWindow();
                         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ClientForm.fxml"))));
-                        clientUserName = txtUserName.getText();
                         return;
                     }
                 }

@@ -40,8 +40,11 @@ public class ClientFormController {
     private final int PORT = 5000;
     Socket remoteSocket;
     String serverMessage = "";
+    public static String clientUserName = "";
 
     public void initialize(){
+        lblClientName.setText(LoginFormController.clientUserName);
+        clientUserName = LoginFormController.clientUserName;
         new Thread(() -> {
             try{
                 remoteSocket = new Socket("localhost",PORT);
@@ -93,14 +96,18 @@ public class ClientFormController {
         OptionUtil.minimizeOnAction(stage);
     }
 
-    public void closeOnAction(MouseEvent mouseEvent) {
+    public void closeOnAction(MouseEvent mouseEvent) throws IOException {
+        // To disconnect the client and will inform it to client
+        dataOutputStream.writeUTF("finish");
         Stage stage = (Stage) context.getScene().getWindow();
         OptionUtil.closeOnAction(stage);
     }
 
     public void txtMessagesSendOnAction(ActionEvent event) {
         try{
-            dataOutputStream.writeUTF(txtMessage.getText().trim());
+            if(!txtMessage.getText().isEmpty()){
+                dataOutputStream.writeUTF(txtMessage.getText().trim());
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -108,7 +115,9 @@ public class ClientFormController {
 
     public void messagesSendOnAction(ActionEvent event) {
         try{
-            dataOutputStream.writeUTF(txtMessage.getText().trim());
+            if(!txtMessage.getText().isEmpty()){
+                dataOutputStream.writeUTF(txtMessage.getText().trim());
+            }
         }catch (IOException e){
             e.printStackTrace();
         }

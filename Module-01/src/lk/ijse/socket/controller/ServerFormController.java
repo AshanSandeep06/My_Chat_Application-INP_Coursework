@@ -37,6 +37,7 @@ public class ServerFormController {
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
     private Socket localSocket;
+    private String clientName = "";
     private String clientMessage = "";
 
     public void initialize(){
@@ -46,7 +47,9 @@ public class ServerFormController {
                 textArea.appendText("Server Started\n");
 
                 localSocket = serverSocket.accept();
-                textArea.appendText("Client Accepted..!\n");
+//                textArea.appendText("Client Accepted..!\n");
+                clientName = ClientFormController.clientUserName;
+                textArea.appendText(clientName +" connected..!\n");
 
                 dataInputStream = new DataInputStream(localSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
@@ -79,7 +82,9 @@ public class ServerFormController {
         OptionUtil.minimizeMouseExit(minimizeLable);
     }
 
-    public void closeOnAction(MouseEvent mouseEvent) {
+    public void closeOnAction(MouseEvent mouseEvent) throws IOException {
+        // To disconnect the server
+        dataOutputStream.writeUTF("finish");
         Stage stage = (Stage) context.getScene().getWindow();
         OptionUtil.closeOnAction(stage);
     }
