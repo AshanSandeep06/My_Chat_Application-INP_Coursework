@@ -14,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
  **/
 
 public class ClientFormController {
-
     public AnchorPane mainContext;
     public AnchorPane context;
     public Label closeLabel;

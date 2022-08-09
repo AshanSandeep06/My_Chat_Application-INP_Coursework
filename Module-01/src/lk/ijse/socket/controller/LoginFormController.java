@@ -3,6 +3,8 @@ package lk.ijse.socket.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,6 +19,7 @@ import javafx.stage.Window;
 import lk.ijse.socket.util.Delta;
 import lk.ijse.socket.util.OptionUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -60,13 +63,14 @@ public class LoginFormController {
         }
     }
 
-    public void chatLoginOnAction(ActionEvent event) {
+    public void chatLoginOnAction(ActionEvent event) throws IOException {
         if (!txtUserName.getText().isEmpty()) {
             if (txtUserName.getText().matches("^[A-z ]{3,25}$")) {
                 for (String userName : usersList) {
                     if (userName.equalsIgnoreCase(txtUserName.getText())) {
-                        System.out.println("Login Successfully..!");
                         new Alert(Alert.AlertType.CONFIRMATION, "Successfully logged to the Group Chat ✔").show();
+                        Stage stage = (Stage) mainContext.getScene().getWindow();
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ClientForm.fxml"))));
                         return;
                     }
                 }
