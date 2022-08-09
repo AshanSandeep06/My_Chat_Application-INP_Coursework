@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -8,15 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="676.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.socket.controller.ServerFormController">
+<AnchorPane fx:id="mainContext" prefHeight="726.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.socket.controller.ServerFormController">
    <children>
-      <ScrollPane fx:id="scrollPane" layoutX="34.0" layoutY="104.0" prefHeight="542.0" prefWidth="679.0" style="-fx-background-color: BLACK;">
+      <ScrollPane fx:id="scrollPane" layoutX="34.0" layoutY="150.0" prefHeight="542.0" prefWidth="679.0" style="-fx-background-color: BLACK;">
          <content>
             <VBox fx:id="vbox" prefHeight="547.0" prefWidth="661.0" style="-fx-background-color: #FFF5;" />
          </content>
       </ScrollPane>
-      <AnchorPane prefHeight="76.0" prefWidth="746.0" style="-fx-background-color: #16287C;">
+      <AnchorPane layoutY="50.0" prefHeight="76.0" prefWidth="746.0" style="-fx-background-color: #16287C;">
          <children>
             <Label layoutX="152.0" layoutY="18.0" text="\@Play Tech Pvt Ltd's Chat Room" textFill="GOLD">
                <font>
@@ -35,5 +35,21 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="context" onMouseDragged="#mouseDraggedOnAction" onMousePressed="#mousePressedOnAction" prefHeight="50.0" prefWidth="746.0" style="-fx-background-color: #F3F3F3;" />
+      <Label fx:id="closeLabel" layoutX="686.0" prefHeight="50.0" prefWidth="60.0" />
+      <ImageView fx:id="imgClose" fitHeight="33.0" fitWidth="32.0" layoutX="700.0" layoutY="9.0" onMouseClicked="#closeOnAction" onMouseEntered="#closeMouseEnteredOnAction" onMouseExited="#closeMouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/close.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="minimizeLable" layoutX="617.0" prefHeight="50.0" prefWidth="60.0" />
+      <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="631.0" layoutY="9.0" onMouseClicked="#minimizeOnAction" onMouseEntered="#minimizeMouseEnteredOnAction" onMouseExited="#minimizeMouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/minimize.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

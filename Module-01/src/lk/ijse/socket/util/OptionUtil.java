@@ -17,7 +17,7 @@ public class OptionUtil {
     }
 
     public static void minimizeMouseExit(Label label){
-        label.setStyle("-fx-background-color: #FFFF");
+        label.setStyle("-fx-background-color: #F3F3F3");
     }
 
     public static void closeMouseEnter(Label label, ImageView image){
@@ -26,7 +26,7 @@ public class OptionUtil {
     }
 
     public static void closeMouseExit(Label label, ImageView image){
-        label.setStyle("-fx-background-color: #FFFF");
+        label.setStyle("-fx-background-color:  #F3F3F3");
         image.setImage(new Image("lk/ijse/socket/assets/images/close.png"));
     }
 

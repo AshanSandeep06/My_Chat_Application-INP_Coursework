@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import lk.ijse.socket.util.Delta;
 import lk.ijse.socket.util.OptionUtil;
 
 import java.util.ArrayList;
@@ -32,6 +33,9 @@ public class LoginFormController {
     public Label minimizeLable;
     public AnchorPane context;
     public ImageView imgClose;
+    public AnchorPane mainContext;
+
+    final Delta dragDelta = new Delta();
 
     public void initialize() {
         usersList.addAll("Sameera Gunawardena", "Nimal Perera", "Imali Nethushi");
@@ -109,5 +113,17 @@ public class LoginFormController {
     public void closeOnAction(MouseEvent mouseEvent) {
         Stage stage = (Stage) context.getScene().getWindow();
         OptionUtil.closeOnAction(stage);
+    }
+
+    public void mouseDraggedOnAction(MouseEvent mouseEvent) {
+        Stage window = (Stage) mainContext.getScene().getWindow();
+        window.setX(mouseEvent.getScreenX() + dragDelta.x);
+        window.setY(mouseEvent.getScreenY() + dragDelta.y);
+    }
+
+    public void mousePressedOnAction(MouseEvent mouseEvent) {
+        Stage window = (Stage) mainContext.getScene().getWindow();
+        dragDelta.x = window.getX() - mouseEvent.getScreenX();
+        dragDelta.y = window.getY() - mouseEvent.getScreenY();
     }
 }
