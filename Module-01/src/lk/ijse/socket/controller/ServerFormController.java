@@ -106,7 +106,10 @@ public class ServerFormController {
             Stage stage = (Stage) context.getScene().getWindow();
             OptionUtil.closeOnAction(stage);
         }*/
-        try{
+
+        // ------------------------------------------
+
+        /*try{
             if(serverSocket!=null){
                 if(dataOutputStream!=null){
                     dataOutputStream.writeUTF("finish");
@@ -118,6 +121,13 @@ public class ServerFormController {
         }finally {
             Stage stage = (Stage) context.getScene().getWindow();
             OptionUtil.closeOnAction(stage);
+        }*/
+
+        try{
+            Stage stage = (Stage) context.getScene().getWindow();
+            OptionUtil.closeOnAction(stage);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

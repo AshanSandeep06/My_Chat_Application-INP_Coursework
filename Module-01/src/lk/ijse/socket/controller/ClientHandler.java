@@ -42,6 +42,12 @@ public class ClientHandler extends Thread {
                 msg = split[1].trim();
 
                 if(msg.equalsIgnoreCase("finish") || msg.equalsIgnoreCase("bye")){
+                    for (ClientHandler c1 : clientHandlersList) {
+                        if(c1.localSocket == this.localSocket){
+                            clientHandlersList.remove(c1);
+                            break;
+                        }
+                    }
                     break;
                 }
 
