@@ -54,10 +54,10 @@ public class ServerFormController {
                     clientName = ClientFormController.clientUserName;
                     textArea.appendText(clientName +" connected..!\n");
 
-                    /*dataInputStream = new DataInputStream(localSocket.getInputStream());
+                    dataInputStream = new DataInputStream(localSocket.getInputStream());
                     dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
 
-                    clientMessage = dataInputStream.readUTF();
+                   /* clientMessage = dataInputStream.readUTF();
                     textArea.appendText(clientMessage+"\n");*/
 
                     clientHandlersList.add(clientHandler);
@@ -109,7 +109,9 @@ public class ServerFormController {
 
         try{
             if(serverSocket!=null){
-                dataOutputStream.writeUTF("finish");
+                if(dataOutputStream!=null){
+                    dataOutputStream.writeUTF("finish");
+                }
             }
 
         }catch (Exception e){
