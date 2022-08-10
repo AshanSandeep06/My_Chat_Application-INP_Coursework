@@ -111,7 +111,12 @@ public class ClientFormController {
     public void txtMessagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
-                dataOutputStream.writeUTF(txtMessage.getText().trim());
+                dataOutputStream.writeUTF(LoginFormController.clientUserName+" : "+txtMessage.getText().trim());
+
+                txtMessageArea.appendText(LoginFormController.clientUserName+" : "+txtMessage.getText().trim()+"\n");
+                if(txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")){
+                    System.exit(0);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,7 +126,12 @@ public class ClientFormController {
     public void messagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
-                dataOutputStream.writeUTF(txtMessage.getText().trim());
+                dataOutputStream.writeUTF(LoginFormController.clientUserName+" : "+txtMessage.getText().trim());
+
+                txtMessageArea.appendText(LoginFormController.clientUserName+" : "+txtMessage.getText().trim()+"\n");
+                if(txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")){
+                    System.exit(0);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -16,6 +16,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * @author : Ashan Sandeep
@@ -36,9 +37,10 @@ public class ServerFormController {
     private final int PORT = 5000;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    private Socket localSocket;
     private String clientName = "";
     private String clientMessage = "";
+
+    private ArrayList<ClientHandler> clientHandlersList = new ArrayList<>();
 
     public void initialize(){
         new Thread(() -> {
@@ -46,21 +48,30 @@ public class ServerFormController {
                 serverSocket = new ServerSocket(PORT);
                 textArea.appendText("Server Started\n");
 
-                localSocket = serverSocket.accept();
-//                textArea.appendText("Client Accepted..!\n");
-                clientName = ClientFormController.clientUserName;
-                textArea.appendText(clientName +" connected..!\n");
+                while(true){
+                    Socket localSocket = serverSocket.accept();
+                    ClientHandler clientHandler = new ClientHandler(localSocket, clientHandlersList);
+                    clientName = ClientFormController.clientUserName;
+                    textArea.appendText(clientName +" connected..!\n");
 
-                dataInputStream = new DataInputStream(localSocket.getInputStream());
-                dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
+                    /*dataInputStream = new DataInputStream(localSocket.getInputStream());
+                    dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
 
-                while(!clientMessage.equalsIgnoreCase("finish")){
                     clientMessage = dataInputStream.readUTF();
-                    textArea.appendText(clientMessage+"\n");
+                    textArea.appendText(clientMessage+"\n");*/
+
+                    clientHandlersList.add(clientHandler);
+                    clientHandler.start();
                 }
 
             }catch (IOException e){
                 e.printStackTrace();
+            }finally {
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
@@ -83,7 +94,7 @@ public class ServerFormController {
 
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
         // To disconnect the server
-        try{
+       /* try{
             if(localSocket!=null){
                 if(localSocket.isConnected()){
                     dataOutputStream.writeUTF("finish");
@@ -94,7 +105,7 @@ public class ServerFormController {
         }finally {
             Stage stage = (Stage) context.getScene().getWindow();
             OptionUtil.closeOnAction(stage);
-        }
+        }*/
     }
 
     public void minimizeOnAction(MouseEvent mouseEvent) {
