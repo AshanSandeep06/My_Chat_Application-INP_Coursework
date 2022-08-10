@@ -22,6 +22,9 @@ import java.net.Socket;
  **/
 
 public class ClientFormController {
+    public static String clientUserName = "";
+    final Delta dragDelta = new Delta();
+    private final int PORT = 5000;
     public AnchorPane mainContext;
     public AnchorPane context;
     public Label closeLabel;
@@ -32,32 +35,27 @@ public class ClientFormController {
     public TextField txtMessage;
     public ImageView imgCameraIcon;
     public ImageView imgEmojiIcon;
-
-    final Delta dragDelta = new Delta();
-
-    private DataOutputStream dataOutputStream;
-    private DataInputStream dataInputStream;
-    private final int PORT = 5000;
     Socket remoteSocket;
     String serverMessage = "";
-    public static String clientUserName = "";
+    private DataOutputStream dataOutputStream;
+    private DataInputStream dataInputStream;
 
-    public void initialize(){
+    public void initialize() {
         lblClientName.setText(LoginFormController.clientUserName);
         clientUserName = LoginFormController.clientUserName;
         new Thread(() -> {
-            try{
-                remoteSocket = new Socket("localhost",PORT);
+            try {
+                remoteSocket = new Socket("localhost", PORT);
 
                 dataInputStream = new DataInputStream(remoteSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(remoteSocket.getOutputStream());
 
-                while(!serverMessage.equalsIgnoreCase("finish")){
+                while (!serverMessage.equalsIgnoreCase("finish")) {
                     serverMessage = dataInputStream.readUTF();
-                    txtMessageArea.appendText(serverMessage+"\n");
+                    txtMessageArea.appendText(serverMessage + "\n");
                 }
 
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }).start();
@@ -98,27 +96,34 @@ public class ClientFormController {
 
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
         // To disconnect the client and will inform it to client
-        dataOutputStream.writeUTF("finish");
-        Stage stage = (Stage) context.getScene().getWindow();
-        OptionUtil.closeOnAction(stage);
+        try {
+            if (remoteSocket.isConnected()) {
+                dataOutputStream.writeUTF("finish");
+            }
+        } catch (Exception e) {
+
+        } finally {
+            Stage stage = (Stage) context.getScene().getWindow();
+            OptionUtil.closeOnAction(stage);
+        }
     }
 
     public void txtMessagesSendOnAction(ActionEvent event) {
-        try{
-            if(!txtMessage.getText().isEmpty()){
+        try {
+            if (!txtMessage.getText().isEmpty()) {
                 dataOutputStream.writeUTF(txtMessage.getText().trim());
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void messagesSendOnAction(ActionEvent event) {
-        try{
-            if(!txtMessage.getText().isEmpty()){
+        try {
+            if (!txtMessage.getText().isEmpty()) {
                 dataOutputStream.writeUTF(txtMessage.getText().trim());
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

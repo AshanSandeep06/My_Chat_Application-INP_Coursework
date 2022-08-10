@@ -41,7 +41,7 @@ public class ServerFormController {
     private String clientMessage = "";
 
     public void initialize(){
-        Thread t1 = new Thread(() -> {
+        new Thread(() -> {
             try{
                 serverSocket = new ServerSocket(PORT);
                 textArea.appendText("Server Started\n");
@@ -62,8 +62,7 @@ public class ServerFormController {
             }catch (IOException e){
                 e.printStackTrace();
             }
-        });
-        t1.start();
+        }).start();
     }
 
     public void closeMouseEnteredOnAction(MouseEvent mouseEvent) {
@@ -84,9 +83,18 @@ public class ServerFormController {
 
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
         // To disconnect the server
-        dataOutputStream.writeUTF("finish");
-        Stage stage = (Stage) context.getScene().getWindow();
-        OptionUtil.closeOnAction(stage);
+        try{
+            if(localSocket!=null){
+                if(localSocket.isConnected()){
+                    dataOutputStream.writeUTF("finish");
+                }
+            }
+        }catch (Exception e){
+
+        }finally {
+            Stage stage = (Stage) context.getScene().getWindow();
+            OptionUtil.closeOnAction(stage);
+        }
     }
 
     public void minimizeOnAction(MouseEvent mouseEvent) {
