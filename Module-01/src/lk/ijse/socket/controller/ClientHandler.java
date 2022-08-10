@@ -41,7 +41,7 @@ public class ClientHandler extends Thread {
                 String[] split = output.split(":");
                 msg = split[1].trim();
 
-                if(msg.equalsIgnoreCase("finish")){
+                if(msg.equalsIgnoreCase("finish") || msg.equalsIgnoreCase("bye")){
                     break;
                 }
                 displayMessagesToAllClients(output);
