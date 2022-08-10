@@ -44,6 +44,7 @@ public class ClientHandler extends Thread {
                 if(msg.equalsIgnoreCase("finish") || msg.equalsIgnoreCase("bye")){
                     break;
                 }
+
                 displayMessagesToAllClients(output);
             }
 

@@ -106,6 +106,18 @@ public class ServerFormController {
             Stage stage = (Stage) context.getScene().getWindow();
             OptionUtil.closeOnAction(stage);
         }*/
+
+        try{
+            if(serverSocket!=null){
+                dataOutputStream.writeUTF("finish");
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            Stage stage = (Stage) context.getScene().getWindow();
+            OptionUtil.closeOnAction(stage);
+        }
     }
 
     public void minimizeOnAction(MouseEvent mouseEvent) {
