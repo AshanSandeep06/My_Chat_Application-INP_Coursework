@@ -55,9 +55,7 @@ public class ClientHandler extends Thread {
 
     private void displayMessagesToAllClients(String outputMessage) throws IOException {
         for (ClientHandler c1 : clientHandlersList) {
-            if (!String.valueOf(c1.localSocket.getPort()).equals(String.valueOf(localSocket.getPort()))) {
-                c1.dataOutputStream.writeUTF(outputMessage);
-            }
+            c1.dataOutputStream.writeUTF(outputMessage);
         }
     }
 }

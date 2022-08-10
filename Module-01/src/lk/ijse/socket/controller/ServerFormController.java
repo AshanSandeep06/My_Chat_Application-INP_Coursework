@@ -106,7 +106,6 @@ public class ServerFormController {
             Stage stage = (Stage) context.getScene().getWindow();
             OptionUtil.closeOnAction(stage);
         }*/
-
         try{
             if(serverSocket!=null){
                 if(dataOutputStream!=null){
