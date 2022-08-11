@@ -40,6 +40,7 @@ public class ClientHandler extends Thread {
                 output = dataInputStream.readUTF();
                 String[] split = output.split(":");
                 msg = split[1].trim();
+                System.out.println("MSG : "+msg);
 
                 if(msg.equalsIgnoreCase("finish") || msg.equalsIgnoreCase("bye")){
                     for (ClientHandler c1 : clientHandlersList) {
@@ -55,7 +56,7 @@ public class ClientHandler extends Thread {
             }
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

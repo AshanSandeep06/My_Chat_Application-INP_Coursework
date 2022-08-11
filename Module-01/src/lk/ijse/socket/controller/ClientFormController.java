@@ -97,11 +97,9 @@ public class ClientFormController {
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
         // To disconnect the client and will inform it to client
         try {
-            if (remoteSocket.isConnected()) {
-                dataOutputStream.writeUTF("finish");
-            }
+            dataOutputStream.writeUTF(LoginFormController.clientUserName + " : finish");
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             Stage stage = (Stage) context.getScene().getWindow();
             OptionUtil.closeOnAction(stage);
@@ -111,8 +109,8 @@ public class ClientFormController {
     public void txtMessagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
-                dataOutputStream.writeUTF(LoginFormController.clientUserName+" : "+txtMessage.getText().trim());
-                if(txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")){
+                dataOutputStream.writeUTF(LoginFormController.clientUserName + " : " + txtMessage.getText().trim());
+                if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
                     System.exit(0);
                 }
             }
@@ -124,8 +122,8 @@ public class ClientFormController {
     public void messagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
-                dataOutputStream.writeUTF(LoginFormController.clientUserName+" : "+txtMessage.getText().trim());
-                if(txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")){
+                dataOutputStream.writeUTF(LoginFormController.clientUserName + " : " + txtMessage.getText().trim());
+                if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
                     System.exit(0);
                 }
             }
