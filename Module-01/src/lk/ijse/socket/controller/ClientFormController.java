@@ -275,7 +275,27 @@ public class ClientFormController {
         }
     }
 
-    public void sendEmojisOnAction(MouseEvent mouseEvent) {
-        //
+    public void openEmojiPaneOnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void emoji1OnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void emoji2OnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void emoji3OnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void emoji4OnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void emoji5OnAction(MouseEvent mouseEvent) {
+
     }
 }

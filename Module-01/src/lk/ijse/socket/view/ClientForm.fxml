@@ -71,7 +71,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgEmojiIcon" fitHeight="40.0" fitWidth="40.0" layoutX="24.0" layoutY="23.0" onMousePressed="#sendEmojisOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgEmojiIcon" fitHeight="40.0" fitWidth="40.0" layoutX="24.0" layoutY="23.0" onMouseClicked="#openEmojiPaneOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/emoji.png" />
                </image>
@@ -86,29 +86,29 @@
             <VBox fx:id="vBox" prefHeight="461.0" prefWidth="658.0" />
          </content>
       </ScrollPane>
-      <Pane fx:id="pane" layoutX="19.0" layoutY="618.0" prefHeight="50.0" prefWidth="273.0" style="-fx-border-radius: 10; -fx-background-color: black; -fx-background-radius: 12;">
+      <Pane fx:id="pane" layoutX="19.0" layoutY="618.0" opacity="0.88" prefHeight="50.0" prefWidth="273.0" style="-fx-border-radius: 10; -fx-background-color: black; -fx-background-radius: 12;">
          <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="19.0" layoutY="9.0" onMouseClicked="#emoji1OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/mood.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="69.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="69.0" layoutY="9.0" onMouseClicked="#emoji2OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/laughing.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="120.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="120.0" layoutY="9.0" onMouseClicked="#emoji3OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/love.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="170.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="170.0" layoutY="9.0" onMouseClicked="#emoji4OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/embarasse.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="221.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="221.0" layoutY="9.0" onMouseClicked="#emoji5OnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/sleep.png" />
                </image>
