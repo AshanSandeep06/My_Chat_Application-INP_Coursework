@@ -24,6 +24,7 @@ import java.util.ArrayList;
  **/
 
 public class ServerFormController {
+    public static TextArea staticTextArea;
     public Label closeLabel;
     public ImageView imgClose;
     public Label minimizeLable;
@@ -43,22 +44,24 @@ public class ServerFormController {
     private ArrayList<ClientHandler> clientHandlersList = new ArrayList<>();
 
     public void initialize(){
+        staticTextArea = textArea;
         new Thread(() -> {
             try{
                 serverSocket = new ServerSocket(PORT);
-                textArea.appendText("Server Started\n");
+                textArea.appendText("Server Started\n\n");
 
                 while(true){
                     Socket localSocket = serverSocket.accept();
                     ClientHandler clientHandler = new ClientHandler(localSocket, clientHandlersList);
-                    clientName = ClientFormController.clientUserName;
-                    textArea.appendText(clientName +" connected..!\n");
+
+                    /*clientName = ClientFormController.clientUserName;*/
+                    /*textArea.appendText(clientName +" connected..!\n");*/
 
                     dataInputStream = new DataInputStream(localSocket.getInputStream());
                     dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
 
-                   /* clientMessage = dataInputStream.readUTF();
-                    textArea.appendText(clientMessage+"\n");*/
+                    clientMessage = dataInputStream.readUTF();
+                    textArea.appendText(clientMessage +" connected..!\n");
 
                     clientHandlersList.add(clientHandler);
                     clientHandler.start();

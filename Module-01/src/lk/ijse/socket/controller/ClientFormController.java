@@ -46,9 +46,12 @@ public class ClientFormController {
         new Thread(() -> {
             try {
                 remoteSocket = new Socket("localhost", PORT);
+                System.out.println("Client Name is : "+clientUserName);
 
                 dataInputStream = new DataInputStream(remoteSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(remoteSocket.getOutputStream());
+
+                dataOutputStream.writeUTF(clientUserName);
 
                 /* !message.equalsIgnoreCase("finish")  ---> While loop condition */
                 while (true) {

@@ -2,9 +2,7 @@ package lk.ijse.socket.controller;
 
 import javafx.scene.control.Alert;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -45,6 +43,8 @@ public class ClientHandler extends Thread {
                 if(msg.equalsIgnoreCase("finish") || msg.equalsIgnoreCase("bye")){
                     for (ClientHandler c1 : clientHandlersList) {
                         if(c1.localSocket == this.localSocket){
+                            /* ---- To notified to the server which client was disconnected ---- */
+                            ServerFormController.staticTextArea.appendText("\n"+split[0]+": "+"Disconnected\n");
                             clientHandlersList.remove(c1);
                             break;
                         }

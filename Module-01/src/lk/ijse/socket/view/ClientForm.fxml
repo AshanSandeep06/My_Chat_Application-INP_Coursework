@@ -39,7 +39,7 @@
                   <Font name="System Bold Italic" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="lblClientName" layoutX="19.0" layoutY="11.0" text="Imali Nethushi" textFill="WHITE">
+            <Label fx:id="lblClientName" layoutX="19.0" layoutY="11.0" text="Client" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -48,9 +48,9 @@
             <Label layoutX="19.0" layoutY="38.0" text="Active now" textFill="WHITESMOKE" />
          </children>
       </AnchorPane>
-      <TextArea fx:id="txtMessageArea" editable="false" layoutX="21.0" layoutY="132.0" prefHeight="505.0" prefWidth="680.0">
+      <TextArea fx:id="txtMessageArea" layoutX="21.0" layoutY="132.0" prefHeight="505.0" prefWidth="680.0">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="22.0" />
          </font></TextArea>
       <AnchorPane layoutY="652.0" prefHeight="86.0" prefWidth="721.0" style="-fx-background-color: #16287C;">
          <children>
