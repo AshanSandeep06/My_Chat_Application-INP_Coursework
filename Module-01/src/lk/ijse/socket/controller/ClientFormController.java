@@ -46,7 +46,6 @@ public class ClientFormController {
         new Thread(() -> {
             try {
                 remoteSocket = new Socket("localhost", PORT);
-                System.out.println("Client Name is : "+clientUserName);
 
                 dataInputStream = new DataInputStream(remoteSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(remoteSocket.getOutputStream());
@@ -119,6 +118,7 @@ public class ClientFormController {
                     System.exit(0);
                 }
             }
+            txtMessage.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -133,6 +133,7 @@ public class ClientFormController {
                     System.exit(0);
                 }
             }
+            txtMessage.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
