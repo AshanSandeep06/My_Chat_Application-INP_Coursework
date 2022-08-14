@@ -99,7 +99,7 @@ public class ClientFormController {
     }
 
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
-        // To disconnect the client and will inform it to client
+        // To disconnect the client and will inform it to server
         try {
             dataOutputStream.writeUTF(LoginFormController.clientUserName + " : finish");
         } catch (Exception e) {
@@ -136,5 +136,13 @@ public class ClientFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void sendImagesOnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void sendEmojisOnAction(MouseEvent mouseEvent) {
+
     }
 }

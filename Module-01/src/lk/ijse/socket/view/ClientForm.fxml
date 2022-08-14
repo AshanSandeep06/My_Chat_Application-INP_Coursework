@@ -65,15 +65,21 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <ImageView fx:id="imgCameraIcon" fitHeight="33.0" fitWidth="33.0" layoutX="516.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgCameraIcon" fitHeight="33.0" fitWidth="33.0" layoutX="516.0" layoutY="27.0" onMousePressed="#sendImagesOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/camera1.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
-            <ImageView fx:id="imgEmojiIcon" fitHeight="40.0" fitWidth="40.0" layoutX="24.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgEmojiIcon" fitHeight="40.0" fitWidth="40.0" layoutX="24.0" layoutY="23.0" onMousePressed="#sendEmojisOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/emoji.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </AnchorPane>
