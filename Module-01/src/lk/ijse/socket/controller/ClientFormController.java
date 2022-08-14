@@ -36,7 +36,7 @@ public class ClientFormController {
     public ImageView imgCameraIcon;
     public ImageView imgEmojiIcon;
     Socket remoteSocket;
-    String serverMessage = "";
+    String message = "";
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
 
@@ -50,9 +50,10 @@ public class ClientFormController {
                 dataInputStream = new DataInputStream(remoteSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(remoteSocket.getOutputStream());
 
-                while (!serverMessage.equalsIgnoreCase("finish")) {
-                    serverMessage = dataInputStream.readUTF();
-                    txtMessageArea.appendText(serverMessage + "\n\n");
+                /* !message.equalsIgnoreCase("finish")  ---> While loop condition */
+                while (true) {
+                    message = dataInputStream.readUTF();
+                    txtMessageArea.appendText(message + "\n\n");
                 }
 
             } catch (IOException e) {
