@@ -49,6 +49,8 @@ public class ClientHandler extends Thread {
                             break;
                         }
                     }
+
+                    displayMessagesToAllClients(output);
                     break;
                 }
 
