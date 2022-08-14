@@ -62,6 +62,9 @@ public class ClientFormController {
     public void initialize() {
         lblClientName.setText(LoginFormController.clientUserName);
         clientUserName = LoginFormController.clientUserName;
+
+        pane.setVisible(false);
+
         new Thread(() -> {
             try {
                 remoteSocket = new Socket("localhost", PORT);
@@ -276,26 +279,26 @@ public class ClientFormController {
     }
 
     public void openEmojiPaneOnAction(MouseEvent mouseEvent) {
-
+        pane.setVisible(!pane.isVisible());
     }
 
     public void emoji1OnAction(MouseEvent mouseEvent) {
-
+        txtMessage.appendText("\uD83D\u1f642");
     }
 
     public void emoji2OnAction(MouseEvent mouseEvent) {
-
+        txtMessage.appendText("\uD83D\u1f602");
     }
 
     public void emoji3OnAction(MouseEvent mouseEvent) {
-
+        txtMessage.appendText("\uD83D\u1f60d");
     }
 
     public void emoji4OnAction(MouseEvent mouseEvent) {
-
+        txtMessage.appendText("\uD83D\u1f61d");
     }
 
     public void emoji5OnAction(MouseEvent mouseEvent) {
-
+        txtMessage.appendText("\uD83D\u1f634");
     }
 }
