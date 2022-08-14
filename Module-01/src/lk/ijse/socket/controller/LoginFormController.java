@@ -42,7 +42,7 @@ public class LoginFormController {
     public static String clientUserName = "";
 
     public void initialize() {
-        usersList.addAll("Ravindu Imantha", "Ashan Sandeep", "Imali Nethushi");
+        usersList.addAll("Sameera Bandara", "Kamal Perera", "Imali Gunawardena");
     }
 
     public void keyReleasedOnAction(KeyEvent keyEvent) {
