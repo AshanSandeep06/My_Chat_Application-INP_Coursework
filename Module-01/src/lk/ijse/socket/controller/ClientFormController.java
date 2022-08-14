@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -48,6 +49,7 @@ public class ClientFormController {
     public ImageView imgCameraIcon;
     public ImageView imgEmojiIcon;
     public VBox vBox;
+    public Pane pane;
     Socket remoteSocket;
     String message = "";
     private DataOutputStream dataOutputStream;
