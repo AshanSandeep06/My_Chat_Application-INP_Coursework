@@ -52,7 +52,7 @@ public class ClientFormController {
 
                 while (!serverMessage.equalsIgnoreCase("finish")) {
                     serverMessage = dataInputStream.readUTF();
-                    txtMessageArea.appendText(serverMessage + "\n");
+                    txtMessageArea.appendText(serverMessage + "\n\n");
                 }
 
             } catch (IOException e) {
