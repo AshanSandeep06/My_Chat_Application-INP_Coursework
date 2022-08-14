@@ -1,6 +1,11 @@
 package lk.ijse.socket.controller;
 
+import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 import java.io.*;
 import java.net.Socket;
@@ -44,7 +49,7 @@ public class ClientHandler extends Thread {
                     for (ClientHandler c1 : clientHandlersList) {
                         if(c1.localSocket == this.localSocket){
                             /* ---- To notified to the server which client was disconnected ---- */
-                            ServerFormController.staticTextArea.appendText("\n"+split[0]+": "+"Disconnected\n");
+                            ServerFormController.staticTextArea.appendText("\n"+split[0]+" "+"has left the chat\n");
                             clientHandlersList.remove(c1);
                             break;
                         }
