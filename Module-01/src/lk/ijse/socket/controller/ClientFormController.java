@@ -70,6 +70,7 @@ public class ClientFormController {
                 /* !message.equalsIgnoreCase("finish")  ---> While loop condition */
                 while (true) {
                     message = dataInputStream.readUTF();
+
                     String[] split = message.split(":");
                     String client = split[0].trim();
 
@@ -211,7 +212,14 @@ public class ClientFormController {
     }
 
     public void sendImagesOnAction(MouseEvent mouseEvent) throws IOException {
-        //
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image");
+        this.filePath = fileChooser.showOpenDialog(stage);
+//        System.out.println(filePath.getName());
+        if(filePath!=null){
+            dataOutputStream.writeUTF(LoginFormController.clientUserName + " " + "img" + filePath.getPath());
+        }
     }
 
     public void sendEmojisOnAction(MouseEvent mouseEvent) {
