@@ -111,6 +111,7 @@ public class ClientFormController {
             if (!txtMessage.getText().isEmpty()) {
                 dataOutputStream.writeUTF(LoginFormController.clientUserName + " : " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
+                    txtMessageArea.appendText(txtMessage.getText().trim());
                     System.exit(0);
                 }
             }
@@ -124,6 +125,7 @@ public class ClientFormController {
             if (!txtMessage.getText().isEmpty()) {
                 dataOutputStream.writeUTF(LoginFormController.clientUserName + " : " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
+                    txtMessageArea.appendText(txtMessage.getText().trim());
                     System.exit(0);
                 }
             }
