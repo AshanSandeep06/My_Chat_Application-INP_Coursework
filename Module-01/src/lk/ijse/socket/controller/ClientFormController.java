@@ -8,12 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
@@ -71,63 +73,112 @@ public class ClientFormController {
                 while (true) {
                     message = dataInputStream.readUTF();
 
-                    String[] split = message.split(":");
-                    String client = split[0].trim();
-
-                    if(clientUserName.equalsIgnoreCase(client)){
-                        HBox hBox = new HBox();
-                        hBox.setAlignment(Pos.CENTER_RIGHT);
-
-                        hBox.setPadding(new Insets(5, 5, 5, 10));
-                        Text text = new Text("Me : "+split[1].trim());
-                        text.setStyle("-fx-font-weight: BOLD");
-                        text.setStyle("-fx-font-size: 20");
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle("-fx-color: rgb(192,192,192);" + "-fx-background-color: rgb(15,125,242);" + " -fx-background-radius: 20px");
-
-                        textFlow.setPadding(new Insets(5, 10, 5, 10));
-                        text.setFill(Color.color(0.934, 0.945, 0.996));
-
-                        hBox.getChildren().add(textFlow);
-
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                vBox.getChildren().add(hBox);
-
-                                /*For take a space between messages*/
-                                HBox hBox1 = new HBox();
-                                hBox1.setAlignment(Pos.CENTER_LEFT);
-                                hBox1.setPadding(new Insets(5, 5, 5, 10));
-                                vBox.getChildren().add(hBox1);
-                            }
-                        });
-                    }else{
-                        HBox hBox = new HBox();
-                        hBox.setAlignment(Pos.CENTER_LEFT);
-                        hBox.setPadding(new Insets(5, 5, 5, 10));
-
-                        Text text = new Text(message);
-                        text.setStyle("-fx-font-weight: BOLD");
-                        text.setStyle("-fx-font-size: 20");
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle(" -fx-background-color: rgb(192,192,192);" + " -fx-background-radius: 22px");
-                        textFlow.setPadding(new Insets(5, 10, 5, 10));
-                        hBox.getChildren().add(textFlow);
-
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                vBox.getChildren().add(hBox);
-
-                                /*For take a space between messages*/
-                                HBox hBox1 = new HBox();
-                                hBox1.setAlignment(Pos.CENTER_LEFT);
-                                hBox1.setPadding(new Insets(5, 5, 5, 10));
-                                vBox.getChildren().add(hBox1);
-                            }
-                        });
+                    String[] ar = message.split(":-");
+                    String s = ar[1].trim();
+                    String firstThreeChars = "";
+                    if(s.length()>3){
+                        firstThreeChars = s.substring(0,3);
                     }
+
+                    if(firstThreeChars.equalsIgnoreCase("img")){
+                        String[] split = message.split(":");
+                        String client1 = split[0].trim();
+
+                        File file = new File(s.substring(3));
+                        Image image = new Image(file.toURI().toString());
+                        ImageView imageView = new ImageView(image);
+
+                        imageView.setFitHeight(350);
+                        imageView.setFitWidth(350);
+
+                        HBox hBox = new HBox(10);
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+                        if(clientUserName.equalsIgnoreCase(client1)){
+                            hBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+                            Text text1 = new Text("Me :- ");
+                            text1.setFont(new Font("BOLD",22));
+                            hBox.getChildren().add(text1);
+                            hBox.getChildren().add(imageView);
+
+                        }else{
+                            String sender = ar[0].trim();
+
+                            vBox.setAlignment(Pos.TOP_LEFT);
+                            hBox.setAlignment(Pos.TOP_LEFT);
+
+
+                            Text text1=new Text(sender+" :- ");
+                            text1.setFont(new Font("BOLD",22));
+                            hBox.getChildren().add(text1);
+                            hBox.getChildren().add(imageView);
+                        }
+
+                        Platform.runLater(() -> {
+                            vBox.getChildren().add(hBox);
+                        });
+
+                    }else{
+                        String[] split = message.split(":");
+                        String client2 = split[0].trim();
+
+                        if(clientUserName.equalsIgnoreCase(client2)){
+                            HBox hBox = new HBox();
+                            hBox.setAlignment(Pos.CENTER_RIGHT);
+
+                            hBox.setPadding(new Insets(5, 5, 5, 10));
+                            Text text = new Text("Me : "+split[1].trim());
+                            text.setStyle("-fx-font-weight: bold");
+                            text.setStyle("-fx-font-size: 20");
+                            TextFlow textFlow = new TextFlow(text);
+                            textFlow.setStyle("-fx-color: rgb(192,192,192);" + "-fx-background-color: rgb(15,125,242);" + " -fx-background-radius: 20px");
+
+                            textFlow.setPadding(new Insets(5, 10, 5, 10));
+                            text.setFill(Color.color(0.934, 0.945, 0.996));
+
+                            hBox.getChildren().add(textFlow);
+
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    vBox.getChildren().add(hBox);
+
+                                    /*For take a space between messages*/
+                                    HBox hBox1 = new HBox();
+                                    hBox1.setAlignment(Pos.CENTER_LEFT);
+                                    hBox1.setPadding(new Insets(5, 5, 5, 10));
+                                    vBox.getChildren().add(hBox1);
+                                }
+                            });
+                        }else{
+                            HBox hBox = new HBox();
+                            hBox.setAlignment(Pos.CENTER_LEFT);
+                            hBox.setPadding(new Insets(5, 5, 5, 10));
+
+                            Text text = new Text(message);
+                            text.setStyle("-fx-font-weight: bold");
+                            text.setStyle("-fx-font-size: 20");
+                            TextFlow textFlow = new TextFlow(text);
+                            textFlow.setStyle(" -fx-background-color: rgb(192,192,192);" + " -fx-background-radius: 22px");
+                            textFlow.setPadding(new Insets(5, 10, 5, 10));
+                            hBox.getChildren().add(textFlow);
+
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    vBox.getChildren().add(hBox);
+
+                                    /*For take a space between messages*/
+                                    HBox hBox1 = new HBox();
+                                    hBox1.setAlignment(Pos.CENTER_LEFT);
+                                    hBox1.setPadding(new Insets(5, 5, 5, 10));
+                                    vBox.getChildren().add(hBox1);
+                                }
+                            });
+                        }
+                    }
+
                 }
 
             } catch (IOException e) {
@@ -172,7 +223,7 @@ public class ClientFormController {
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
         // To disconnect the client and will inform it to server
         try {
-            dataOutputStream.writeUTF(LoginFormController.clientUserName + " : finish");
+            dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- finish");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -184,7 +235,7 @@ public class ClientFormController {
     public void txtMessagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
-                dataOutputStream.writeUTF(LoginFormController.clientUserName + " : " + txtMessage.getText().trim());
+                dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
 //                    txtMessageArea.appendText(txtMessage.getText().trim());
                     System.exit(0);
@@ -199,7 +250,7 @@ public class ClientFormController {
     public void messagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
-                dataOutputStream.writeUTF(LoginFormController.clientUserName + " : " + txtMessage.getText().trim());
+                dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
 //                    txtMessageArea.appendText(txtMessage.getText().trim());
                     System.exit(0);
@@ -218,7 +269,7 @@ public class ClientFormController {
         this.filePath = fileChooser.showOpenDialog(stage);
 //        System.out.println(filePath.getName());
         if(filePath!=null){
-            dataOutputStream.writeUTF(LoginFormController.clientUserName + " " + "img" + filePath.getPath());
+            dataOutputStream.writeUTF(LoginFormController.clientUserName+ " :- "+"img" + filePath.getPath());
         }
     }
 

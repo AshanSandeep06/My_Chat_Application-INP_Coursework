@@ -41,7 +41,7 @@ public class ClientHandler extends Thread {
 
             while (true) {
                 output = dataInputStream.readUTF();
-                String[] split = output.split(":");
+                String[] split = output.split(":-");
                 msg = split[1].trim();
                 /*System.out.println("MSG : "+msg);*/
 
@@ -49,7 +49,7 @@ public class ClientHandler extends Thread {
                     for (ClientHandler c1 : clientHandlersList) {
                         if(c1.localSocket == this.localSocket){
                             /* ---- To notified to the server which client was disconnected ---- */
-                            ServerFormController.staticTextArea.appendText("\n"+split[0]+" "+"has left the chat\n");
+                            ServerFormController.staticTextArea.appendText("\n"+split[0].trim()+" "+"has left the chat\n");
                             clientHandlersList.remove(c1);
                             break;
                         }
