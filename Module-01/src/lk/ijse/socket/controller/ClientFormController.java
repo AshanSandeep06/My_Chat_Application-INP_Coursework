@@ -42,9 +42,6 @@ public class ClientFormController {
     public ImageView imgClose;
     public Label minimizeLable;
     public Label lblClientName;
-
-    /*public TextArea txtMessageArea;*/
-
     public TextField txtMessage;
     public ImageView imgCameraIcon;
     public ImageView imgEmojiIcon;
