@@ -283,22 +283,22 @@ public class ClientFormController {
     }
 
     public void emoji1OnAction(MouseEvent mouseEvent) {
-        txtMessage.appendText("\uD83D\u1f642");
+        txtMessage.appendText("\uD83D\uDE42");
     }
 
     public void emoji2OnAction(MouseEvent mouseEvent) {
-        txtMessage.appendText("\uD83D\u1f602");
+        txtMessage.appendText("\uD83D\uDE02");
     }
 
     public void emoji3OnAction(MouseEvent mouseEvent) {
-        txtMessage.appendText("\uD83D\u1f60d");
+        txtMessage.appendText("\uD83D\uDE0D");
     }
 
     public void emoji4OnAction(MouseEvent mouseEvent) {
-        txtMessage.appendText("\uD83D\u1f61d");
+        txtMessage.appendText("\uD83D\uDE1D");
     }
 
     public void emoji5OnAction(MouseEvent mouseEvent) {
-        txtMessage.appendText("\uD83D\u1f634");
+        txtMessage.appendText("\uD83D\uDE34");
     }
 }
