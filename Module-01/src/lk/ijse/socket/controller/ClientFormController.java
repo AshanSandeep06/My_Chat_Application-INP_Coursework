@@ -92,8 +92,8 @@ public class ClientFormController {
                         Image image = new Image(file.toURI().toString());
                         ImageView imageView = new ImageView(image);
 
-                        imageView.setFitHeight(350);
-                        imageView.setFitWidth(350);
+                        imageView.setFitHeight(215);
+                        imageView.setFitWidth(215);
 
                         HBox hBox = new HBox(10);
                         hBox.setAlignment(Pos.BOTTOM_RIGHT);
