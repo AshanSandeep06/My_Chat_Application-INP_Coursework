@@ -55,7 +55,6 @@ public class ClientFormController {
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
 
-    /* 2022-08-14 -----> Added this codes */
     private FileChooser fileChooser;
     private File filePath;
 
@@ -242,7 +241,6 @@ public class ClientFormController {
             if (!txtMessage.getText().isEmpty()) {
                 dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
-//                    txtMessageArea.appendText(txtMessage.getText().trim());
                     System.exit(0);
                 }
             }
@@ -257,7 +255,6 @@ public class ClientFormController {
             if (!txtMessage.getText().isEmpty()) {
                 dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
-//                    txtMessageArea.appendText(txtMessage.getText().trim());
                     System.exit(0);
                 }
             }
@@ -272,7 +269,6 @@ public class ClientFormController {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
         this.filePath = fileChooser.showOpenDialog(stage);
-//        System.out.println(filePath.getName());
         if(filePath!=null){
             dataOutputStream.writeUTF(LoginFormController.clientUserName+ " :- "+"img" + filePath.getPath());
         }
