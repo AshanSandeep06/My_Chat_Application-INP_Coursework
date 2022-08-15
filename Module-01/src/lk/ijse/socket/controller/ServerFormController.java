@@ -54,9 +54,6 @@ public class ServerFormController {
                     Socket localSocket = serverSocket.accept();
                     ClientHandler clientHandler = new ClientHandler(localSocket, clientHandlersList);
 
-                    /*clientName = ClientFormController.clientUserName;*/
-                    /*textArea.appendText(clientName +" connected..!\n");*/
-
                     dataInputStream = new DataInputStream(localSocket.getInputStream());
                     dataOutputStream = new DataOutputStream(localSocket.getOutputStream());
 
