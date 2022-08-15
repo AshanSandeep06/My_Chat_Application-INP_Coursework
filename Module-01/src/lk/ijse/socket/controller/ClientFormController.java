@@ -194,6 +194,7 @@ public class ClientFormController {
         }).start();
     }
 
+    /* Pressed and dragged the window */
     public void mouseDraggedOnAction(MouseEvent mouseEvent) {
         Stage window = (Stage) mainContext.getScene().getWindow();
         window.setX(mouseEvent.getScreenX() + dragDelta.x);
@@ -228,8 +229,8 @@ public class ClientFormController {
     }
 
     public void closeOnAction(MouseEvent mouseEvent) throws IOException {
-        // To disconnect the client and will inform it to server
         try {
+            // To disconnect the client and will inform it to server
             dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- finish");
         } catch (Exception e) {
             e.printStackTrace();
@@ -242,6 +243,7 @@ public class ClientFormController {
     public void txtMessagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
+                // While sending messages, mentioning client's name and send the ,messages
                 dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
                     System.exit(0);
@@ -256,6 +258,7 @@ public class ClientFormController {
     public void messagesSendOnAction(ActionEvent event) {
         try {
             if (!txtMessage.getText().isEmpty()) {
+                // While sending messages, mentioning client's name and send the ,messages
                 dataOutputStream.writeUTF(LoginFormController.clientUserName + " :- " + txtMessage.getText().trim());
                 if (txtMessage.getText().equalsIgnoreCase("bye") || txtMessage.getText().equalsIgnoreCase("finish")) {
                     System.exit(0);
