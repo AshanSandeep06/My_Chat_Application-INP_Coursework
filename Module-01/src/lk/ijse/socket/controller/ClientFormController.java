@@ -118,6 +118,12 @@ public class ClientFormController {
 
                         Platform.runLater(() -> {
                             vBox.getChildren().add(hBox);
+
+                            /*For take a space between messages*/
+                            HBox hBox1 = new HBox();
+                            hBox1.setAlignment(Pos.CENTER_LEFT);
+                            hBox1.setPadding(new Insets(5, 5, 5, 10));
+                            vBox.getChildren().add(hBox1);
                         });
 
                     }else{
